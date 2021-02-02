@@ -246,26 +246,6 @@ class Request
 		return $this;
 	}
 
-	/**
-	 * @param array $ssl
-	 *      sslcert 公钥证书地址
-	 *      sslkey 私钥证书地址
-	 * @return $this
-	 */
-	public function sslpem($ssl=['sslcert'=>'','sslkey'=>'']){
-		if(empty($ssl)){
-			return $this;
-		}
-		extract($ssl);
-
-		$this->options[CURLOPT_SSLCERTTYPE] = 'pem';
-		$this->options[CURLOPT_SSLCERT] = $sslcert;
-		$this->options[CURLOPT_SSLKEYTYPE] = 'pem';
-		$this->options[CURLOPT_SSLKEYTYPE] = $sslkey;
-
-		return $this;
-	}
-
 	public function cainfo($value=''){
 
 		$this->options[CURLOPT_CAINFO] = $value;
