@@ -27,10 +27,10 @@ $sms = new Sms('ali',$config);
 //$res = $sms->sendSms('***********',['code'=>'132456','address'=>'asdasdasd','phone'=>'1589016131']);
 
 /*$config = [
-    'accessKeyId' => 'LTAI6xls0Blbdf5g',
-    'accessSecret' => 'oEFoMf00tLT7fwl20uT0bUsznFtRaG',
-    'signName' => 'SuiYi',
-    'templateCode' => 'SMS_190794346',
+    'accessKeyId' => '*****',
+    'accessSecret' => '*****',
+    'signName' => '***',
+    'templateCode' => '****',
     'templateParam' => 'code',
 ];*/
 
