@@ -18,6 +18,8 @@ use Janmas\Sms\Util\Config;
  * Class Sms
  * @package Janmas\Sms
  * @property Ali|Yun $class
+ * @method \Exception sendSms($phone,$code)
+ * @method \Exception sendBatchSms($phone=[],$code=[])
  */
 class Sms
 {

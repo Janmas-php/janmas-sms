@@ -20,6 +20,13 @@ use Janmas\Sms\Util\Request;
 class Yun extends AbstractSmsDriver
 {
 
+	/**
+	 * 发送短信
+	 * @param array $phone
+	 * @param array $code
+	 * @return mixed
+	 * @throws \Exception
+	 */
 	public function sendSms( $phone=[], $code=[] )
 	{
 		if ( $this->config->offsetExists('tpl_id') ){
@@ -55,6 +62,13 @@ class Yun extends AbstractSmsDriver
 		return $this->send($query, $apiUrl);
 	}
 
+	/**
+	 * 发送多条短信
+	 * @param string $phone
+	 * @param string $code
+	 * @return mixed
+	 * @throws \Exception
+	 */
 	public function sendBatchSms( $phone = '', $code = '' )
 	{
 		if(

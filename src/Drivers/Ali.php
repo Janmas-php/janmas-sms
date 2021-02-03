@@ -24,6 +24,13 @@ use GuzzleHttp\Exception\ServerException;
 class Ali extends AbstractSmsDriver
 {
 
+	/**
+	 * 发送短息
+	 * @param string $phone
+	 * @param string $code
+	 * @return array
+	 * @throws \Exception
+	 */
 	public function sendSms( $phone='', $code='' )
 	{
 		$query = [
@@ -42,6 +49,13 @@ class Ali extends AbstractSmsDriver
 		return $this->send($query,'SendSms');
 	}
 
+	/**
+	 * 发送多条短信
+	 * @param array $phone
+	 * @param array $code
+	 * @return array
+	 * @throws \Exception
+	 */
 	public function sendBatchSms( $phone = [], $code = [] )
 	{
 		if(!is_array($phone) || !is_array($code)){
