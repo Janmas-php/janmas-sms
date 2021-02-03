@@ -102,49 +102,26 @@ class Yun extends AbstractSmsDriver
 
 	private function send( $query, $url )
 	{
-		$header = [
-            'Content-Type:application/x-www-form-urlencoded',
-            'Accept:application/json;charset=utf-8;'
-		];
-		$response = Request::instance()->method('post')->header($header)->url($url)->data(http_build_query($query))->exec();
-		$response = json_decode($response);
-		if(is_null($response)){
-		    throw new \Exception('发送失败，请检查header头参数');
-        }
-		if ( $response->code != 0 ){
-			throw new \Exception($response->detail);
+		$client = new \GuzzleHttp\Client();
+		try{
+			$result = $client->request('post', $url, [
+				'verify'      => false,
+				'header'      => [
+					'Content-Type:application/x-www-form-urlencoded',
+					'Accept:application/json;charset=utf-8;'
+				],
+				'form_params' => $query
+			]);
+
+			$res = json_decode($result->getBody()->read(1024));
+			if($res->code == 0){
+				return $res;
+			}
+			throw new \Exception($res->msg);
+		} catch (\GuzzleHttp\Exception\ClientException $e) {
+			$res =json_decode($e->getResponse()->getBody()->read(1024));
+			throw new \Exception($res->msg);
 		}
-		return $response;
 	}
 
-    public function send1($data ,$url){
-
-        $ch = curl_init();
-
-        curl_setopt($ch, CURLOPT_URL, $url);
-
-        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, FALSE);
-
-        curl_setopt($ch, CURLOPT_SSL_VERIFYHOST, FALSE);
-        curl_setopt($ch,CURLOPT_HTTPHEADER,[
-            'Content-Type:application/x-www-form-urlencoded',
-            'Accept:application/json;charset=utf-8;'
-        ]);
-        // POST数据
-
-        curl_setopt($ch, CURLOPT_POST, 1);
-
-        // 把post的变量加上
-
-        curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($data));
-
-        $output = curl_exec($ch);
-
-        curl_close($ch);
-        var_dump($output);
-        return $output;
-
-    }
 }

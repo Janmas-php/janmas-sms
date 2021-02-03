@@ -9,7 +9,8 @@
     ],
     "require": {
         "alibabacloud/client": "^1.5",
-        "yunpian/yunpian-php-sdk" : "~1.0"
+        "yunpian/yunpian-php-sdk" : "~1.0",
+        "guzzlehttp/guzzle": "^7.2"
     },
     "autoload": {
         "psr-4": {
