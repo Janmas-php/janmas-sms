@@ -11,15 +11,13 @@ include '../../vendor/autoload.php';
 
 use Janmas\Sms\Sms;
 
-$config = [
+/*$config = [
 	'accessKeyId' => '*********',
 	'accessSecret' => '*********',
 	'signName' => '******',
 	'templateCode' => '******',
 ];
-
-$sms = new Sms('ali',$config);
-
+$sms = new Sms('ali',$config);*/
 /**
  * 发送单条(多变量)
  * @var \Janmas\Sms\Drivers\Ali $sms
@@ -33,17 +31,35 @@ $sms = new Sms('ali',$config);
     'templateCode' => '****',
     'templateParam' => 'code',
 ];*/
-
+//$sms = new Sms('ali',$config);
 /**
  * 发送单条(单变量)
  * @var \Janmas\Sms\Drivers\Ali $sms
  */
 //$res = $sms->sendSms('***********','123456');
 
+
+/*$config = [
+    'accessKeyId' => '*****',
+    'accessSecret' => '*****',
+    'signName' => '***',
+    'templateCode' => '****',
+];*/
+
+//$sms = new Sms('ali',$config);
 /**
- *
  * 发送多条 多变量
  */
 //$sms->sendBatchSms(['***********'],[['code'=>'132456','address'=>'asdasdasd','phone'=>'1589016131']]);
 
-$sms->sendBatchSms(['***********'],['code'=>'****']);
+/*$config = [
+    'accessKeyId' => '*****',
+    'accessSecret' => '*****',
+    'signName' => '***',
+    'templateCode' => '****',
+];*/
+//$sms = new Sms('ali',$config);
+/**
+ * 发送多条单变量
+ */
+//$sms->sendBatchSms(['***********'],['code'=>'****']);
